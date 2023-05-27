@@ -10,7 +10,7 @@ void DocumentManager :: addDocument(string name, int id, int license_limit){
 }
 
 void DocumentManager :: addPatron(int patronID){
-    patronInfo.push_back(patronID);
+    patronInfo.insert(patronID);
 }
 
 int DocumentManager :: search(string name){
@@ -24,9 +24,8 @@ int DocumentManager :: search(string name){
 }
 
 bool DocumentManager :: borrowDocument(int docid, int patronID){
-    if(find(patronInfo.begin(), patronInfo.end(), patronID) != patronInfo.end()){
-        Document targetDoc;
-        targetDoc = documentDict.at(docid);
+    if(patronInfo.count(patronID)){
+        Document targetDoc = documentDict.at(docid);
         if(targetDoc.license_limit > targetDoc.borrowedNum){
             targetDoc.borrowedNum ++;
             return true;
@@ -41,7 +40,7 @@ bool DocumentManager :: borrowDocument(int docid, int patronID){
 }
 
 void DocumentManager :: returnDocument(int docid, int patronID){
-        if(find(patronInfo.begin(), patronInfo.end(), patronID) != patronInfo.end()){
+        if(patronInfo.count(patronID)){
         Document targetDoc;
         targetDoc = documentDict.at(docid);
         if(targetDoc.borrowedNum > 0){

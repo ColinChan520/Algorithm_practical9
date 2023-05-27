@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
-#include <vector>
+#include <unordered_set>
 #include <algorithm>
 
 using namespace std;
@@ -13,7 +13,7 @@ class DocumentManager{
     public:
         unordered_map<int, Document> documentDict;
         unordered_map<string, int> nameIdDict;
-        vector<int> patronInfo;
+        unordered_set<int> patronInfo;
         void addDocument(string name, int id, int license_limit);
         void addPatron(int patronID);
         int search(string name); // returns docid if name is in the document collection or 0 if the name is not in the collection
