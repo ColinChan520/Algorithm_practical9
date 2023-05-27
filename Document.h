@@ -9,7 +9,7 @@ class Document{
     public:
         string name;
         int license_limit;
-        int borrowedNum;
+        // int borrowedNum;
 };
 
 #endif

@@ -26,8 +26,8 @@ bool DocumentManager :: borrowDocument(int docid, int patronID){
     if(find(patronInfo.begin(), patronInfo.end(), patronID) != patronInfo.end()){
         Document targetDoc;
         targetDoc = documentDict.at(docid);
-        if(targetDoc.license_limit > targetDoc.borrowedNum){
-            targetDoc.borrowedNum ++;
+        if(targetDoc.license_limit > 0){
+            targetDoc.license_limit --;
             return true;
         }
         else{
@@ -43,7 +43,7 @@ void DocumentManager :: returnDocument(int docid, int patronID){
         if(find(patronInfo.begin(), patronInfo.end(), patronID) != patronInfo.end()){
         Document targetDoc;
         targetDoc = documentDict.at(docid);
-            targetDoc.borrowedNum --;
+            targetDoc.license_limit ++;
             return;
         }
     else{
