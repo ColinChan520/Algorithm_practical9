@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ class DocumentManager{
     public:
         unordered_map<int, Document> documentDict;
         unordered_map<string, int> nameIdDict;
+        unordered_map<int, vector<int>> borrowDict;
         unordered_set<int> patronInfo;
         void addDocument(string name, int id, int license_limit);
         void addPatron(int patronID);
